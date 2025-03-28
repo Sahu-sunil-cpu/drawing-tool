@@ -1,17 +1,18 @@
 
 name: Deploy to staging
 on:
-  push: [ main ]
+  push:
+    branches: [ main ]
 
   jobs:
     redeploy_everything:
-    runs-on: ubuntu-latest
-    name: Deplying everything to the staging cluster
-    steps:
-       run: |
-          echo ${{ secrets.SSH_PRIVATE_KEY }} &> ~/ssh_key
-          ssh -i ~/ssh_key root@16.171.250.124
-          cd dev/devops-trial/ && git pull
-          pnpm install
-          pm2 restart ws-server
-          pm2 restart http-server
+      runs-on: ubuntu-latest
+      name: Deplying everything to the staging cluster
+      steps:
+        - run: |
+            echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
+            ssh -i ~/ssh_key root@16.171.250.124
+            cd dev/devops-trial/ && git pull
+            pnpm install
+            pm2 restart ws-server
+            pm2 restart http-server
