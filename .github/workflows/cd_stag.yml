@@ -17,6 +17,7 @@ jobs:
             echo "${{ secrets.KNOWN_HOSTS }}" &> /home/runner/.ssh/known_hosts
             chmod 700 /home/runner/ssh_key
             ssh -i ~/ssh_key ubuntu@13.61.152.243
+            ls
             cd drawing-tool && git pull
             pnpm install
             pm2 restart http-server
