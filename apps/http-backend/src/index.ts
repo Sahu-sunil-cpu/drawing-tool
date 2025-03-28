@@ -24,7 +24,7 @@ const prisma = prismaClient
 
 // hashing password is remaining
 app.post("/signup", async (req, res) => {
-    console.log("---------------------------------")
+    console.log("--------------------------------- my name is")
     const data = CreateUserSchema.safeParse(req.body);
     //@ts-ignore
 
