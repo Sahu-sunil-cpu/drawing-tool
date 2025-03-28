@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
 
-  jobs:
+jobs:
     redeploy_everything:
       runs-on: ubuntu-latest
       name: Deplying everything to the staging cluster
