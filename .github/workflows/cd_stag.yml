@@ -11,8 +11,8 @@ jobs:
       steps:
         - run: |
             echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
+            echo "${{ secrets.KNOWN_HOSTS }}" &> ~/.ssh/known_hosts
             ssh -i ~/ssh_key root@16.171.250.124
-            cd dev/devops-trial/ && git pull
+            cd drawing-tool && git pull
             pnpm install
-            pm2 restart ws-server
             pm2 restart http-server
